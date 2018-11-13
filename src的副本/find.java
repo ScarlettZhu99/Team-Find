@@ -64,8 +64,52 @@ public class find {
         
          Integer count;
         
-       
-       
+        /**
+         *
+         * @author Haiping Zhu
+         */  
+        for(int i=0;i<len;i++){
+            if (len==0)
+                break;
+            if( Dict1.containsKey(words[i])  ){
+              
+     /*caes1*/  if(i==0 & i+1<len){       //the very first word if the string& not the last word
+                    count=Dict2.get(words[i+1]);
+                    if (count==null)
+                        Dict2.put(words[i+1], 1);
+                    else
+                        Dict2.put(words[i+1], count+1);
+                }
+                
+     /*caes2*/  if(i==0 & i+1>=len)      //only one word in the entire string
+                    continue;
+                
+     /*caes3*/  if(i>0 & i+1<len){       //in the midddle, get the former and the later
+                    
+                    count=Dict2.get(words[i+1]);//i+1
+                    if (count==null)
+                        Dict2.put(words[i+1], 1);
+                    else
+                        Dict2.put(words[i+1], count+1);
+                    
+                    count=Dict2.get(words[i-1]);//i-1
+                    if (count==null)
+                        Dict2.put(words[i-1], 1);
+                    else
+                        Dict2.put(words[i-1], count+1);
+                }
+                
+     /*caes4*/  if(i>0 & i+1>=len) {  //the very last word in the string 
+                    count=Dict2.get(words[i-1]);//i-1
+                    if (count==null)
+                        Dict2.put(words[i-1], 1);
+                    else
+                        Dict2.put(words[i-1], count+1);
+                }
+                
+            }    
+        }
+
         
         Set<String> keySet = Dict2.keySet();
         for (String key: keySet) {
