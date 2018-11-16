@@ -86,6 +86,7 @@ public class find {
                 
      /*caes3*/  if(i>0 & i+1<len){       //in the midddle, get the former and the later
                     
+                     /*
                     count=Dict2.get(words[i+1]);//i+1
                     if (count==null)
                         Dict2.put(words[i+1], 1);
@@ -97,6 +98,21 @@ public class find {
                         Dict2.put(words[i-1], 1);
                     else
                         Dict2.put(words[i-1], count+1);
+                
+                */
+                    String current=words[i-1]+" "+words[i];
+                    count=Dict2.get(current);
+                    if (count==null)
+                        Dict2.put(current, 1);
+                    else
+                        Dict2.put(current, count+1);
+                    
+                    current=words[i]+" "+words[i+1];
+                    count=Dict2.get(current);
+                    if (count==null)
+                        Dict2.put(current, 1);
+                    else
+                        Dict2.put(current, count+1);
                 }
                 
      /*caes4*/  if(i>0 & i+1>=len) {  //the very last word in the string 
